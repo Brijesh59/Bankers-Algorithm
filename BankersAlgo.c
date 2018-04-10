@@ -85,6 +85,40 @@ bool isSafe(int processes[], int available[], int max[][R], int allocation[][R])
     printf(">\n");
     return true;
 }
+
+void displayDefaultValues(int available[], int max[][R], int allocation[][R]){
+
+
+    // Print No. of Process
+    printf("No. of Processes: %d\n", P);
+
+    // Print No. of Resources
+    printf("No. of Resources: %d\n", R);
+
+    // Print Available Resources
+    printf("Available Resources: < ");
+    for(int i = 0; i < P; i++){
+        printf("%d ",available[i]);
+    }
+    printf(">\n");
+
+    // Print Maximum Resource allocated to processes
+    printf("Maximum Resources Allocated:\n");
+    for (int i = 0 ; i < P ; i++){
+        for (int j = 0 ; j < R ; j++)
+            printf("%d ",max[i][j]);
+        printf("\n");
+    }
+        
+    // Print Resources which are currently allocated to processes
+    printf("Resources Currently Allocated:\n");
+    for (int i = 0 ; i < P ; i++){
+        for (int j = 0 ; j < R ; j++)
+            printf("%d ",allocation[i][j]);
+        printf("\n");
+    }
+        
+}
  
 int main()
 {
@@ -105,10 +139,15 @@ int main()
                             {3, 2, 0},
                             {2, 1, 1},
                            };
+    printf("----------------------------------------------------------------------\n");
+    displayDefaultValues(available, max, allocation);
+    printf("Status of the System: ");
     
     /* To check system is in safe state or not.If the System is in 
        safe state return the safe sequence */
     isSafe(processes, available, max, allocation);
+    printf("----------------------------------------------------------------------\n");
+
 
     int pNo,n[R];
     xyz:
